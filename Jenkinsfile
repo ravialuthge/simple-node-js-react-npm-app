@@ -22,7 +22,8 @@ pipeline {
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh' 
-                sh ' touch abc.txt '
+                sh ' touch abc.js '
+                sh ' exit 1 '
                 
             }
         }
@@ -30,7 +31,7 @@ pipeline {
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'abc.txt'
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'abc.js'
       }
     }
   }
