@@ -21,10 +21,8 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
-                sh ' docker exec -it b1ee00290bee bash '
-                sh ' cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/src ' 
-                sh ' vi App.js '
+                sh './jenkins/scripts/deliver.sh' 
+                sh ' touch abc.txt '
                 
             }
         }
@@ -32,7 +30,7 @@ pipeline {
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'App.js'
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'abc.txt'
       }
     }
   }
