@@ -23,7 +23,6 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh' 
                 sh ' touch abc.js '
-                sh ' exit 1 '
                 
             }
         }
