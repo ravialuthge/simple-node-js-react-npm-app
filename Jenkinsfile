@@ -22,6 +22,7 @@ pipeline {
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
+                sh ' docker exec -it b1ee00290bee bash '
                 sh ' cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/src ' 
                 sh ' vi App.js '
                 
