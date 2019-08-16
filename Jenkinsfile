@@ -22,8 +22,17 @@ pipeline {
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
+                cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/src 
+                vi App.js
                 
             }
         }
     }
+     post {
+    always {
+      script {
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'App.js'
+      }
+    }
+  }
 }
