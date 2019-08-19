@@ -26,7 +26,7 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
                 sh ' cat /var/jenkins_home/workspace/simple-node-js-react-npm-app/src/App.js '
                 sh ' mkdir abc '
-                sh ' cp /var/jenkins_home/workspace/simple-node-js-react-npm-app/build abc '
+                sh ' cp -r /var/jenkins_home/workspace/simple-node-js-react-npm-app/build abc '
             }
         }
     }
