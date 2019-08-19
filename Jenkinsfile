@@ -33,7 +33,7 @@ pipeline {
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'react-npm-app' , showInline: true
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'react-npm-app/' , showInline: true
       }
     }
   }
