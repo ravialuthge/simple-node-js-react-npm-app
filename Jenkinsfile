@@ -21,16 +21,14 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh' 
-                sh ' touch abc.js '
-                
+                sh './jenkins/scripts/deliver.sh'
             }
         }
     }
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'abc.js' , showInline: true
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: '/var/jenkins_home/workspace/simple-node-js-react-app' , showInline: true
       }
     }
   }
