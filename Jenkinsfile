@@ -25,15 +25,15 @@ pipeline {
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
                 sh ' cat /var/jenkins_home/workspace/simple-node-js-react-npm-app/src/App.js '
-                sh ' mkdir abcd '
-                sh ' cp -r /var/jenkins_home/workspace/simple-node-js-react-npm-app/build abcd '
+                sh ' mkdir react-npm-app '
+                sh ' cp -r /var/jenkins_home/workspace/simple-node-js-react-npm-app/build react-npm-app '
             }
         }
     }
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'abc' , showInline: true
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'react-npm-app' , showInline: true
       }
     }
   }
