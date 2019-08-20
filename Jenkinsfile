@@ -31,7 +31,7 @@ pipeline {
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: sh ' cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ '
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: ' sh ' cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ ' '
       }
     }
   }
