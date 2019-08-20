@@ -24,7 +24,7 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
-                sh ' touch react-npm-app '
+                sh ' mkdir react-npm-app '
                 sh ' cp -r /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ react-npm-app '
             }
         }
