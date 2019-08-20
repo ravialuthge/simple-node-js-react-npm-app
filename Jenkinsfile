@@ -24,14 +24,14 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
-                sh ' up = cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ '
+                sh ' cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ '
             }
         }
     }
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'up' , showInline: true
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: sh ' cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ ' , showInline: true
       }
     }
   }
