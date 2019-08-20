@@ -24,7 +24,7 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
-                up = sh ' cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ '
+                sh ' up = cd /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/ '
             }
         }
     }
