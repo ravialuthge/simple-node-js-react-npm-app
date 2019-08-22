@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         CI = 'true'
-        PATTERN = 'react-npm-app/.'
+        PATTERN = '**/react-npm-app/'
     }
     stages {
         stage('Build') {
