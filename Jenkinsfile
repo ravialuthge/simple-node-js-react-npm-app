@@ -7,6 +7,7 @@ pipeline {
     }
     environment {
         CI = 'true'
+        PATTERN = 'react-npm-app/'
     }
     stages {
         stage('Build') {
@@ -32,7 +33,7 @@ pipeline {
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: 'react-npm-app/' , showInline: true
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: env.PATTERN , showInline: true
         sh 'rm -rf react-npm-app'  
       }
     }
