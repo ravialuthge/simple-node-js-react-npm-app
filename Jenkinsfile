@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         CI = 'true'
-        PATTERN = 'a.txt , b.txt'
+        PATTERN = 'asset-manifest.json , favicon.ico , index.html , manifest.json , service-worker.js , static/'
     }
     stages {
         stage('Build') {
@@ -25,18 +25,18 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
-                sh 'mkdir react-npm-app'
-                sh ' touch a.txt '
-                sh ' touch b.txt '
-                sh 'cp -r /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/. react-npm-app'
+            }
+        }
+        stage('Store to GCS') {
+            steps{
+                sh 'cp -r /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/. /var/jenkins_home/workspace/simple-node-js-react-npm-app'
             }
         }
     }
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: env.PATTERN , showInline: true
-        sh 'rm -rf react-npm-app'  
+        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: env.PATTERN , showInline: true 
       }
     }
   }
