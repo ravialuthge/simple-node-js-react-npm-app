@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         CI = 'true'
-        PATTERN = '**/react-npm-app/*'
+        PATTERN = 'a.txt , b.txt'
     }
     stages {
         stage('Build') {
@@ -26,6 +26,8 @@ pipeline {
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
                 sh 'mkdir react-npm-app'
+                sh ' touch a.txt '
+                sh ' touch b.txt '
                 sh 'cp -r /var/jenkins_home/workspace/simple-node-js-react-npm-app/build/. react-npm-app'
             }
         }
