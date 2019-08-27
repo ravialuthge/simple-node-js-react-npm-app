@@ -36,7 +36,7 @@ pipeline {
      post {
     always {
       script {
-        googleStorageUpload bucket: 'gs://stage.datampowered.com.au', credentialsId: 'DMPipelineDevelopment', pattern: env.PATTERN , showInline: true 
+        googleStorageUpload bucket: 'gs://test_datampowered', credentialsId: 'DMPipelineDevelopment', pattern: env.PATTERN , showInline: true 
       }
     }
          failure {
