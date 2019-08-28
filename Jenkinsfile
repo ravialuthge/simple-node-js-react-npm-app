@@ -37,6 +37,7 @@ pipeline {
       always {
        script {
         googleStorageUpload bucket: 'gs://test_datampowered', credentialsId: 'DMPipelineDevelopment', pattern: env.PATTERN , showInline: true
+           sh ' rm -rf env.PATTERN '
       }
     }
          failure {
